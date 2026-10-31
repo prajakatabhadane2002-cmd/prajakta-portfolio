@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prajakta Bhadane | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['Inter', 'sans-serif'] },
+        colors: { brand: '#be4b5a', soft: '#fdf8f5', sage: { 50:'#fbf1ef', 100:'#f7e2df', 200:'#efc9c4', 300:'#e5aaa3' } }
+      } }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .font-display { font-family: 'Playfair Display', serif; }
+    section[id] { scroll-margin-top: 72px; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+    .fade-up { animation: fadeUp .8s ease-out both; }
+    .d1 { animation-delay: .12s; } .d2 { animation-delay: .24s; } .d3 { animation-delay: .36s; } .d4 { animation-delay: .5s; }
+
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity .7s ease-out, transform .7s ease-out; }
+    .reveal.show { opacity: 1; transform: none; }
+    .slide-left { opacity: 0; transform: translateX(-50px); transition: all .7s ease-out; }
+    .slide-left.show { opacity: 1; transform: none; }
+
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .float { animation: float 4s ease-in-out infinite; }
+    @keyframes blob { 0%,100% { border-radius: 60% 40% 55% 45%; } 50% { border-radius: 45% 55% 40% 60%; } }
+    .blob { animation: blob 9s ease-in-out infinite; }
+
+    /* Typing cursor */
+    @keyframes blink { 50% { opacity: 0; } }
+    .cursor { animation: blink 1s step-end infinite; }
+
+    /* Dark mode (toggled by the moon/sun button) */
+    html.dark body { background: #16100f; color: #e2e8f0; }
+    html.dark header { background: rgba(22,16,15,.92) !important; border-color: #3b2625 !important; }
+    html.dark .bg-white { background: #1f1716 !important; }
+    html.dark .bg-soft { background: #191211 !important; }
+    html.dark .bg-sage-100 { background: #33201f !important; }
+    html.dark .bg-sage-200 { background: #3b2625 !important; }
+    html.dark .bg-slate-900 { background: #334155 !important; }
+    html.dark .text-brand { color: #f0a9a9 !important; }
+    html.dark .text-slate-800, html.dark .text-slate-700 { color: #f1f5f9 !important; }
+    html.dark .text-slate-600, html.dark .text-slate-500 { color: #cbd5e1 !important; }
+    html.dark .border-sage-100, html.dark .border-sage-200 { border-color: #3b2625 !important; }
+    html.dark .border-brand { border-color: #f0a9a9 !important; }
+    html.dark .hover\:bg-sage-50:hover { background: #2a1b1a !important; }
+    html.dark .shadow-sage-300 { --tw-shadow-color: rgba(190,75,90,.35) !important; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
+      .reveal, .slide-left { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body class="bg-soft text-slate-800 font-sans antialiased">
+
+  <!-- NAVBAR -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-soft/90 backdrop-blur border-b border-sage-100">
+    <nav class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <a href="#home" class="w-10 h-10 rounded-full bg-brand text-white flex items-center justify-center font-bold">PB</a>
+      <ul class="hidden md:flex gap-8 text-base font-medium">
+        <li><a class="hover:text-brand transition" href="#home">Home</a></li>
+        <li><a class="hover:text-brand transition" href="#about">About</a></li>
+        <li><a class="hover:text-brand transition" href="#projects">Projects</a></li>
+        <li><a class="hover:text-brand transition" href="#contact">Contact</a></li>
+      </ul>
+      <div class="flex items-center gap-4">
+        <button id="themeBtn" class="text-xl hover:scale-110 transition" aria-label="Toggle dark mode">&#127769;</button>
+        <button id="menuBtn" class="md:hidden text-2xl" aria-label="Toggle menu">&#9776;</button>
+      </div>
+    </nav>
+    <ul id="mobileMenu" class="hidden flex-col gap-3 px-4 pb-4 text-sm font-medium md:hidden">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </header>
+
+  <!-- HOME -->
+  <section id="home" class="min-h-screen pt-24 pb-12 px-4 flex items-center">
+    <div class="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div class="order-2 md:order-1 text-center md:text-left">
+        <p class="text-xs tracking-[0.25em] font-semibold text-brand fade-up">WELCOME TO MY PORTFOLIO</p>
+        <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-bold mt-4 leading-tight fade-up d1">
+          Hello, I'm <span class="text-brand italic">Prajakta Bhadane.</span>
+        </h1>
+        <h2 class="text-lg sm:text-xl text-slate-600 mt-3 font-medium fade-up d2">SYMCA Student | Aspiring Software Developer</h2>
+        <p class="text-sm text-brand font-semibold mt-2 fade-up d2">GES's R. H. Sapat College of Engineering, Management Studies and Research, Nashik 422005</p>
+        <p class="text-lg font-semibold mt-3 h-7 fade-up d3"><span id="typed"></span><span class="cursor text-brand">|</span></p>
+        <p class="mt-4 text-slate-600 max-w-lg mx-auto md:mx-0 fade-up d3">
+          One or two lines about you: what you enjoy and what you like to build.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3 justify-center md:justify-start fade-up d4">
+          <a href="#projects" class="px-6 py-3 rounded-full bg-brand text-white font-semibold shadow-lg shadow-sage-300 hover:scale-105 transition">Explore My Work &#8599;</a>
+          <a href="#about" class="px-6 py-3 rounded-full bg-white border border-slate-200 text-slate-900 font-semibold hover:bg-sage-50 hover:scale-105 transition">About Me</a>
+          <a href="#contact" class="px-6 py-3 rounded-full bg-slate-900 text-white font-semibold hover:bg-slate-700 hover:scale-105 transition">Contact Me</a>
+        </div>
+        <div class="mt-10 flex gap-8 justify-center md:justify-start fade-up d4">
+          <div><p class="font-display text-3xl font-bold text-brand">3</p><p class="text-xs text-slate-500">Projects</p></div>
+          <div><p class="font-display text-3xl font-bold text-brand">9</p><p class="text-xs text-slate-500">Skills</p></div>
+          <div><p class="font-display text-3xl font-bold text-brand">SYMCA</p><p class="text-xs text-slate-500">Current class</p></div>
+        </div>
+      </div>
+
+      <div class="order-1 md:order-2 flex justify-center">
+        <div class="relative">
+          <div class="absolute inset-0 translate-x-4 translate-y-4 rounded-3xl border-2 border-brand -z-10"></div>
+          <img src="images/me.jpg" alt="Photo of Prajakta Bhadane"
+               class="float w-60 h-80 sm:w-72 sm:h-96 lg:w-80 lg:h-[26rem] object-cover object-top rounded-3xl border-4 border-white bg-white shadow-xl" />
+          <span class="absolute -bottom-2 -left-2 sm:left-0 bg-white px-4 py-2 rounded-lg text-sm font-semibold shadow-lg">Aspiring Developer &#10024;</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <p class="text-xs tracking-[0.25em] font-semibold text-brand reveal">GET TO KNOW ME</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mt-2 mb-10 reveal">A little about myself.</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="slide-left bg-soft rounded-2xl p-6 border border-sage-100">
+          <h3 class="font-display text-xl font-bold mb-2">My Journey</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">I am a SYMCA (MCA Engg.) student at GES's R. H. Sapat College of Engineering, Management Studies and Research, Nashik. I enjoy web development and learning new technologies.</p>
+        </div>
+        <div class="slide-left bg-soft rounded-2xl p-6 border border-sage-100" style="transition-delay:.15s">
+          <h3 class="font-display text-xl font-bold mb-2">Technical Skills</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 rounded-full bg-sage-100 text-brand text-xs font-semibold">HTML</span>
+            <span class="px-3 py-1 rounded-full bg-sage-100 text-brand text-xs font-semibold">CSS</span>
+            <span class="px-3 py-1 rounded-full bg-sage-100 text-brand text-xs font-semibold">JavaScript</span>
+            <span class="px-3 py-1 rounded-full bg-sage-100 text-brand text-xs font-semibold">Bootstrap</span>
+            <span class="px-3 py-1 rounded-full bg-sage-100 text-brand text-xs font-semibold">AngularJS</span>
+            <span class="px-3 py-1 rounded-full bg-sage-100 text-brand text-xs font-semibold">React</span>
+            <span class="px-3 py-1 rounded-full bg-sage-100 text-brand text-xs font-semibold">Next.js</span>
+            <span class="px-3 py-1 rounded-full bg-sage-100 text-brand text-xs font-semibold">Tailwind CSS</span>
+            <span class="px-3 py-1 rounded-full bg-sage-100 text-brand text-xs font-semibold">Motion (Framer Motion)</span>
+          </div>
+        </div>
+        <div class="slide-left bg-soft rounded-2xl p-6 border border-sage-100" style="transition-delay:.3s">
+          <h3 class="font-display text-xl font-bold mb-2">My Career Goal</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">My goal is to become a skilled web and software developer, strengthen my programming knowledge and build useful, responsive applications.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <p class="text-xs tracking-[0.25em] font-semibold text-brand reveal">WHAT I'VE BEEN WORKING ON</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mt-2 mb-10 reveal">Projects &amp; Practice.</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="reveal bg-white rounded-2xl p-6 border border-sage-100 border-t-4 border-t-brand shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300">
+          <p class="text-xs font-semibold tracking-widest text-brand">01 / LAB ASSIGNMENT</p>
+          <h3 class="font-display text-2xl font-bold mt-2">Student Manager</h3>
+          <p class="text-slate-600 text-sm mt-2">A student record app that lists, adds and removes students using AngularJS data binding and repeated lists.</p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="px-3 py-1 rounded-full bg-sage-100 text-brand text-xs font-semibold">AngularJS</span>
+            <span class="px-3 py-1 rounded-full bg-sage-100 text-brand text-xs font-semibold">HTML &amp; CSS</span>
+          </div>
+        </article>
+        <article class="reveal bg-white rounded-2xl p-6 border border-sage-100 border-t-4 border-t-brand shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300" style="transition-delay:.1s">
+          <p class="text-xs font-semibold tracking-widest text-brand">02 / WEB DESIGN</p>
+          <h3 class="font-display text-2xl font-bold mt-2">Responsive Bootstrap Page</h3>
+          <p class="text-slate-600 text-sm mt-2">A mobile-friendly web page built with the Bootstrap grid that adjusts to phone, tablet and desktop screens.</p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="px-3 py-1 rounded-full bg-sage-100 text-brand text-xs font-semibold">Bootstrap</span>
+            <span class="px-3 py-1 rounded-full bg-sage-100 text-brand text-xs font-semibold">HTML &amp; CSS</span>
+          </div>
+        </article>
+        <article class="reveal bg-white rounded-2xl p-6 border border-sage-100 border-t-4 border-t-brand shadow-sm hover:shadow-xl hover:-translate-y-2 transition duration-300" style="transition-delay:.2s">
+          <p class="text-xs font-semibold tracking-widest text-brand">03 / WEB DEVELOPMENT</p>
+          <h3 class="font-display text-2xl font-bold mt-2">Personal Portfolio</h3>
+          <p class="text-slate-600 text-sm mt-2">This responsive portfolio shows my education, skills, projects and contact details.</p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="px-3 py-1 rounded-full bg-sage-100 text-brand text-xs font-semibold">HTML</span>
+            <span class="px-3 py-1 rounded-full bg-sage-100 text-brand text-xs font-semibold">Tailwind CSS</span>
+            <span class="px-3 py-1 rounded-full bg-sage-100 text-brand text-xs font-semibold">JavaScript</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-20 px-4 bg-white">
+    <div class="max-w-3xl mx-auto text-center reveal">
+      <p class="text-xs tracking-[0.25em] font-semibold text-brand">LET'S CONNECT</p>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold mt-2">Have a project in mind?</h2>
+      <p class="text-slate-600 mt-4">I am interested in learning, collaborating and exploring opportunities in software development.</p>
+      <p class="mt-3 text-slate-700 font-medium">Email: <a href="mailto:prajaktabhadane15@gmail.com" class="text-brand underline">prajaktabhadane15@gmail.com</a></p>
+      <div class="mt-8 flex flex-wrap gap-3 justify-center">
+        <a href="mailto:prajaktabhadane15@gmail.com" class="px-6 py-3 rounded-full bg-brand text-white font-semibold shadow-lg shadow-sage-300 hover:scale-105 transition">&#9993; Email Me</a>
+        <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener" class="px-6 py-3 rounded-full border-2 border-brand text-brand font-semibold hover:bg-sage-50 hover:scale-105 transition">&#8599; LinkedIn</a>
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="px-6 py-3 rounded-full border-2 border-brand text-brand font-semibold hover:bg-sage-50 hover:scale-105 transition">&#8599; GitHub</a>
+      </div>
+
+      <form id="contactForm" class="mt-10 text-left space-y-3 bg-soft border border-sage-100 rounded-2xl p-6" novalidate>
+        <h3 class="font-display text-xl font-bold">Send me a message</h3>
+        <input id="cname" type="text" placeholder="Your name" class="w-full p-3 rounded-lg border border-sage-200 bg-white focus:outline-none focus:ring-2 focus:ring-brand" />
+        <input id="cemail" type="email" placeholder="Your email" class="w-full p-3 rounded-lg border border-sage-200 bg-white focus:outline-none focus:ring-2 focus:ring-brand" />
+        <textarea id="cmsg" rows="4" placeholder="Your message" class="w-full p-3 rounded-lg border border-sage-200 bg-white focus:outline-none focus:ring-2 focus:ring-brand"></textarea>
+        <p id="formMsg" class="text-sm min-h-[1.25rem]"></p>
+        <button type="submit" class="px-6 py-3 rounded-full bg-brand text-white font-semibold shadow-lg shadow-sage-300 hover:scale-105 transition">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="text-center text-slate-500 text-sm py-6 px-4">
+    Designed &amp; built by Prajakta Bhadane &copy; 2026<br />
+    SYMCA, MCA (Engg.) Department, GES's R. H. Sapat College of Engineering, Management Studies and Research, Nashik 422005<br />
+    Email: <a href="mailto:prajaktabhadane15@gmail.com" class="text-brand font-semibold underline">prajaktabhadane15@gmail.com</a>
+  </footer>
+
+  <button id="toTop" aria-label="Back to top" class="fixed bottom-5 right-5 w-11 h-11 rounded-full bg-brand text-white text-xl shadow-lg opacity-0 pointer-events-none transition hover:scale-110">&#8593;</button>
+
+  <script>
+    const mm = document.getElementById('mobileMenu');
+    document.getElementById('menuBtn').addEventListener('click', () => { mm.classList.toggle('hidden'); mm.classList.toggle('flex'); });
+    mm.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mm.classList.add('hidden'); mm.classList.remove('flex'); }));
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal, .slide-left').forEach(el => io.observe(el));
+
+    // Contact form validation: opens the visitor's email app with the message filled in
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('cname').value.trim();
+      const email = document.getElementById('cemail').value.trim();
+      const text = document.getElementById('cmsg').value.trim();
+      const msg = document.getElementById('formMsg');
+      if (!name || !text || !/^\S+@\S+\.\S+$/.test(email)) {
+        msg.textContent = 'Please enter your name, a valid email and a message.';
+        msg.className = 'text-sm text-red-500';
+        return;
+      }
+      msg.textContent = 'Thank you! Opening your email app...';
+      msg.className = 'text-sm text-green-600';
+      const body = encodeURIComponent(text + '\n\nFrom: ' + name + ' (' + email + ')');
+      window.location.href = 'mailto:prajaktabhadane15@gmail.com?subject=' + encodeURIComponent('Portfolio message from ' + name) + '&body=' + body;
+      e.target.reset();
+    });
+
+    // Dark / light mode (remembers the choice)
+    const themeBtn = document.getElementById('themeBtn');
+    function setTheme(dark) {
+      document.documentElement.classList.toggle('dark', dark);
+      themeBtn.innerHTML = dark ? '&#9728;&#65039;' : '&#127769;';
+      try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+    }
+    let saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) {}
+    setTheme(saved === 'dark');
+    themeBtn.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
+
+    // Typing animation
+    const words = ['Web Developer', 'Problem Solver', 'Tailwind CSS Learner', 'MCA Student'];
+    const typed = document.getElementById('typed');
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      typed.textContent = words[0];
+    } else {
+      let w = 0, c = 0, del = false;
+      (function tick() {
+        const word = words[w];
+        typed.textContent = word.slice(0, c);
+        if (!del && c < word.length) { c++; setTimeout(tick, 90); }
+        else if (!del) { del = true; setTimeout(tick, 1400); }
+        else if (c > 0) { c--; setTimeout(tick, 50); }
+        else { del = false; w = (w + 1) % words.length; setTimeout(tick, 300); }
+      })();
+    }
+
+    // Back-to-top button
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', () => {
+      const show = window.scrollY > 400;
+      toTop.classList.toggle('opacity-0', !show);
+      toTop.classList.toggle('pointer-events-none', !show);
+    });
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>
